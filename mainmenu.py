@@ -19,3 +19,4 @@ while choice != 9:
         player.add_player()
     elif choice == 2:
         player.print_player_info()
+
