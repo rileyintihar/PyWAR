@@ -12,11 +12,21 @@ print()
 while choice != 9:
     print('Enter 1 to add a new player and their info.')
     print('Enter 2 to view a player\'s basic info.')
+    print('Enter 3 to view the entire list of added players.')
+    print('Enter 4 to search for players by number: ')
     print('Enter 9 to exit program.')
     choice = int(input('Menu selection: '))
+
     if choice == 1:
         player.get_player_info()
         player.add_player()
+
     elif choice == 2:
         player.print_player_info()
+
+    elif choice == 3:
+        player.print_player_list()
+
+    elif choice == 4:
+        player.print_player_number()
 
