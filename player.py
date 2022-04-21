@@ -3,6 +3,7 @@
 player_list = []
 player_number_list = []
 
+
 class Player:
     def __init__(self, name=None, number=None, throw=None, bat=None):
         self.name = name
@@ -51,6 +52,7 @@ class Player:
         print()
         print(f'Current list of players: {player_list}')
         print()
+
 
 fielder_list = []
 fielder_position_list = []
