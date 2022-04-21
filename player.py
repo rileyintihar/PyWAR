@@ -3,7 +3,6 @@
 player_list = []
 player_number_list = []
 
-
 class Player:
     def __init__(self, name=None, number=None, throw=None, bat=None):
         self.name = name
@@ -23,6 +22,7 @@ class Player:
         print()
 
     def search_player_name(self):
+        print()
         self.name = input('Enter a player name to search the player list: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -35,6 +35,7 @@ class Player:
             print()
 
     def search_player_number(self):
+        print()
         self.number = input('Enter a player number to search the player list: ')
         for i in range(0, len(player_list)):
             if self.number == player_number_list[i]:
@@ -50,6 +51,21 @@ class Player:
         print()
         print(f'Current list of players: {player_list}')
         print()
+
+fielder_list = []
+fielder_position_list = []
+fielder_ab_list = []
+fielder_hit_list = []
+fielder_bb_list = []
+fielder_k_list = []
+fielder_rbi_list = []
+fielder_single_list = []
+fielder_double_list = []
+fielder_triple_list = []
+fielder_hr_list = []
+fielder_sb_list = []
+fielder_putout_list = []
+fielder_e_list = []
 
 
 class Fielder(Player):
@@ -85,4 +101,32 @@ class Fielder(Player):
         self.putout = input('Enter player\'s number of fielding putouts: ')
         self.e = input('Enter player\'s number of errors: ')
 
+    def add_fielder(self):
+        fielder_list.append(self.name)
+        fielder_position_list.append(self.position)
+        fielder_ab_list.append(self.ab)
+        fielder_hit_list.append(self.hit)
+        fielder_bb_list.append(self.bb)
+        fielder_k_list.append(self.k)
+        fielder_rbi_list.append(self.rbi)
+        fielder_single_list.append(self.single)
+        fielder_double_list.append(self.double)
+        fielder_triple_list.append(self.triple)
+        fielder_hr_list.append(self.hr)
+        fielder_sb_list.append(self.sb)
+        fielder_putout_list.append(self.putout)
+        fielder_e_list.append(self.e)
+        print()
 
+    def search_fielder_position(self):
+        print()
+        self.position = input('Enter a position abbreviation to search the fielder list: ')
+        for i in range(0, len(fielder_position_list)):
+            if self.position == fielder_position_list[i]:
+                print()
+                print(f'{self.name} plays {self.position}.')
+                print()
+        if self.position not in fielder_position_list:
+            print()
+            print('No players play the inputted position. Please try again.')
+            print()

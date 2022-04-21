@@ -16,6 +16,7 @@ while choice != 9:
     print('Enter 2 to view a player\'s basic info.')
     print('Enter 3 to view the entire list of added players.')
     print('Enter 4 to search for players by number: ')
+    print('Enter 5 to search for fielders by position.')
     print('Enter 9 to exit program.')
     choice = int(input('Menu selection: '))
 
@@ -26,6 +27,7 @@ while choice != 9:
         if position_choice == 1:
             print()
             fielder.get_fielder_info()
+            fielder.add_fielder()
             print()
 
 
@@ -38,4 +40,7 @@ while choice != 9:
 
     elif choice == 4:
         player.search_player_number()
+
+    elif choice == 5:
+        fielder.search_fielder_position()
 
