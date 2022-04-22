@@ -15,8 +15,11 @@ while choice != 9:
     print('Enter 1 to add a new player and their info.')
     print('Enter 2 to view a player\'s basic info.')
     print('Enter 3 to view the entire list of added players.')
-    print('Enter 4 to search for players by number: ')
-    print('Enter 5 to search for fielders by position.')
+    print('Enter 4 to search for players by number.')
+    print('Enter 5 to search for specific fielders.')
+    print('Enter 6 to search for specific pitchers.')
+    print('Enter 7 to calculate complicated stats.')
+    print('Enter 8 to compare simple and complicated stats.')
     print('Enter 9 to exit program.')
     choice = int(input('Menu selection: '))
 
@@ -43,4 +46,8 @@ while choice != 9:
 
     elif choice == 5:
         fielder.search_fielder_position()
+
+    elif choice == 7:
+        print('Enter 1 to calculate batting average.')
+        print('Enter 1 to calculate distribution of types of hits.')
 

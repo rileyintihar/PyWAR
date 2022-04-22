@@ -103,6 +103,7 @@ class Fielder(Player):
         self.putout = input('Enter player\'s number of fielding putouts: ')
         self.e = input('Enter player\'s number of errors: ')
 
+
     def add_fielder(self):
         fielder_list.append(self.name)
         fielder_position_list.append(self.position)
