@@ -1,5 +1,3 @@
-# Adds new player to player database
-
 player_list = []
 player_number_list = []
 
@@ -88,7 +86,7 @@ class Fielder(Player):
         self.e = e
 
     def get_fielder_info(self):
-        print(f'Below, you\'ll enter player stats for {self.name}')
+        print(f'Below, you\'ll enter fielder stats for {self.name}')
         self.position = input('Enter player position abbreviation: ')
         self.ab = input('Enter player\'s number of at bats: ')
         self.hit = input('Enter player\'s number of hits: ')
@@ -102,7 +100,6 @@ class Fielder(Player):
         self.sb = input('Enter player\'s number of stolen bases: ')
         self.putout = input('Enter player\'s number of fielding putouts: ')
         self.e = input('Enter player\'s number of errors: ')
-
 
     def add_fielder(self):
         fielder_list.append(self.name)
@@ -133,3 +130,75 @@ class Fielder(Player):
             print()
             print('No players play the inputted position. Please try again.')
             print()
+
+
+pitcher_list = []
+pitcher_type_list = []
+pitcher_k_list = []
+pitcher_bb_list = []
+pitcher_ip_list = []
+pitcher_w_list = []
+pitcher_l_list = []
+pitcher_save_list = []
+pitcher_strike_list = []
+pitcher_ball_list = []
+pitcher_hbp_list = []
+pitcher_e_list = []
+
+
+class Pitcher(Player):
+    def __init__(self, name, type, k, bb, ip, w, l, save, strike, ball, hbp, e):
+        super().__init__(self, name)
+        self.type = type
+        self.k = k
+        self.bb = bb
+        self.ip = ip
+        self.w = w
+        self.l = l
+        self.save = save
+        self.strike = strike
+        self.ball = ball
+        self.hbp = hbp
+        self.e = e
+
+    def get_pitcher_info(self):
+        print(f'Below, you\'ll enter pitcher stats for {self.name}')
+        self.type = input('Enter SP for a starter, RP for a reliever, and CL for a closer: ')
+        self.k = input('Enter pitcher\'s number of strikeouts: ')
+        self.bb = input('Enter pitcher\'s number of walks: ')
+        self.ip = input('Enter pitcher\'s number of innings pitched: ')
+        self.w = input('Enter pitcher\'s number of wins: ')
+        self.l = input('Enter pitcher\'s number of losses: ')
+        self.save = input('Enter pitcher\'s number of saves: ')
+        self.strike = input('Enter pitcher\'s number of strikes thrown: ')
+        self.ball = input('Enter pitcher\'s number of balls thrown: ')
+        self.hbp = input('Enter pitcher\'s number of hit batsmen: ')
+        self.e = input('Enter pitcher\'s number of errors: ')
+
+    def add_pitcher(self):
+        pitcher_list.append(self.name)
+        pitcher_type_list.append(self.type)
+        pitcher_k_list.append(self.k)
+        pitcher_bb_list.append(self.bb)
+        pitcher_ip_list.append(self.ip)
+        pitcher_w_list.append(self.w)
+        pitcher_l_list.append(self.l)
+        pitcher_save_list.append(self.save)
+        pitcher_strike_list.append(self.strike)
+        pitcher_ball_list.append(self.ball)
+        pitcher_hbp_list.append(self.hbp)
+        pitcher_e_list.append(self.e)
+
+    def search_pitcher_position(self):
+        print()
+        self.type = input('Enter SP, RP, or CL to search the pitcher list: ')
+        for i in range(0, len(pitcher_type_list)):
+            if self.type == pitcher_type_list[i]:
+                print()
+                print(f'{self.name} is a {self.type}.')
+                print()
+        if self.type not in pitcher_type_list:
+            print()
+            print(f'No pitchers are classified as {self.type}. Please try again.')
+            print()
+

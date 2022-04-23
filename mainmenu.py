@@ -1,8 +1,10 @@
 # Main menu for PyWAR Baseball Stat Calculator and Analyzer
 from player import Player, Fielder
+from stats import FielderStats
 
 player = Player()
 fielder = Fielder()
+fielder_stats = FielderStats()
 
 choice = None
 position_choice = None
@@ -13,14 +15,13 @@ print()
 
 while choice != 9:
     print('Enter 1 to add a new player and their info.')
-    print('Enter 2 to view a player\'s basic info.')
+    print('Enter 2 to view a player\'s info.')
     print('Enter 3 to view the entire list of added players.')
-    print('Enter 4 to search for players by number.')
-    print('Enter 5 to search for specific fielders.')
-    print('Enter 6 to search for specific pitchers.')
-    print('Enter 7 to calculate complicated stats.')
-    print('Enter 8 to compare simple and complicated stats.')
-    print('Enter 9 to exit program.')
+    print('Enter 4 to search for players by an identifying statistic.')
+    print('Enter 5 to calculate stats.')
+    print('Enter 6 to compare stats.')
+    print('Enter 7 to delete a player.')
+    print('Enter 9 to save and exit program.')
     choice = int(input('Menu selection: '))
 
     if choice == 1:
