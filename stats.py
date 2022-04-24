@@ -13,4 +13,12 @@ class FielderStats(Fielder):
         obp = (self.hit + self.bb) / self.ab
         return obp
 
+    def calculate_slg(self):
+        slg = (self.single + (self.double * 2) + (self.triple * 3) + (self.hr * 4) / self.ab)
+        return slg
+
+    def calculate_bb_percentage(self):
+        bb_percentage = self.bb / self.ab
+        return bb_percentage
+
 

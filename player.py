@@ -147,7 +147,7 @@ pitcher_e_list = []
 
 
 class Pitcher(Player):
-    def __init__(self, name, type, k, bb, ip, w, l, save, strike, ball, hbp, e):
+    def __init__(self, name=None, type=None, k=None, bb=None, ip=None, w=None, l=None, save=None, strike=None, ball=None, hbp=None, e=None):
         super().__init__(self, name)
         self.type = type
         self.k = k

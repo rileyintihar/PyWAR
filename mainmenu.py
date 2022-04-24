@@ -1,9 +1,10 @@
 # Main menu for PyWAR Baseball Stat Calculator and Analyzer
-from player import Player, Fielder
+from player import Player, Fielder, Pitcher
 from stats import FielderStats
 
 player = Player()
 fielder = Fielder()
+pitcher = Pitcher()
 fielder_stats = FielderStats()
 
 choice = None
@@ -34,7 +35,11 @@ while choice != 9:
             fielder.add_fielder()
             print()
 
-
+        elif position_choice == 2:
+            print()
+            pitcher.get_pitcher_info()
+            pitcher.add_pitcher()
+            print()
 
     elif choice == 2:
         player.search_player_name()
