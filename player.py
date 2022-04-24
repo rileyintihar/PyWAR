@@ -63,13 +63,14 @@ fielder_single_list = []
 fielder_double_list = []
 fielder_triple_list = []
 fielder_hr_list = []
+fielder_hbp_list = []
 fielder_sb_list = []
 fielder_putout_list = []
 fielder_e_list = []
 
 
 class Fielder(Player):
-    def __init__(self, name=None, position=None, ab=None, hit=None, bb=None, k=None, rbi=None, single=None, double=None, triple=None, hr=None, sb=None, putout=None, e=None):
+    def __init__(self, name=None, position=None, ab=None, hit=None, bb=None, k=None, rbi=None, single=None, double=None, triple=None, hr=None, hbp=None, sb=None, putout=None, e=None):
         super().__init__(self, name)
         self.position = position
         self.ab = ab
@@ -81,6 +82,7 @@ class Fielder(Player):
         self.double = double
         self.triple = triple
         self.hr = hr
+        self.hbp = hbp
         self.sb = sb
         self.putout = putout
         self.e = e
@@ -97,6 +99,7 @@ class Fielder(Player):
         self.double = input('Enter player\'s number of doubles: ')
         self.triple = input('Enter player\'s number of triples: ')
         self.hr = input('Enter player\'s number of home runs: ')
+        self.hbp = input('Enter player\'s number of times hit by pitch: ')
         self.sb = input('Enter player\'s number of stolen bases: ')
         self.putout = input('Enter player\'s number of fielding putouts: ')
         self.e = input('Enter player\'s number of errors: ')
@@ -113,6 +116,7 @@ class Fielder(Player):
         fielder_double_list.append(self.double)
         fielder_triple_list.append(self.triple)
         fielder_hr_list.append(self.hr)
+        fielder_hbp_list.append(self.hbp)
         fielder_sb_list.append(self.sb)
         fielder_putout_list.append(self.putout)
         fielder_e_list.append(self.e)
