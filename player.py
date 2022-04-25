@@ -197,7 +197,7 @@ class Fielder(Player):
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
-                slg = ((float(fielder_single_list[i]) + float(fielder_double_list[i] * 2) + float(fielder_triple_list[i] * 3) + float(fielder_hr_list[i] * 4)) / float(fielder_ab_list[i])) / 100
+                slg = ((int(fielder_single_list[i]) + int(fielder_double_list[i] * 2) + int(fielder_triple_list[i] * 3) + int(fielder_hr_list[i] * 4)) / int(fielder_ab_list[i])) / 100
                 print()
                 print(f'{self.name} has a slugging percentage of {slg}.')
                 print()
@@ -205,6 +205,28 @@ class Fielder(Player):
             print()
             print('That player\'s name was not found in the list of added players. Please try again.')
             print()
+
+    def calculate_ops(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                ops = (((int(fielder_single_list[i]) + int(fielder_double_list[i] * 2) + int(fielder_triple_list[i] * 3) + int(fielder_hr_list[i] * 4)) / int(fielder_ab_list[i])) / 100) + ((float(fielder_hit_list[i]) + float(fielder_bb_list[i]) + float(fielder_hbp_list[i])) / float(fielder_ab_list[i]))
+                print()
+                print(f'{self.name} has an on base plus slugging value of {ops}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_bb_percent(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                bb_percent = int(fielder_bb_list[i]) / int(fielder_ab_list[i])
+                print()
+                print(f'{self.name} has a walk percentage of {bb_percent}.')
+                print()
 
 
 pitcher_list_text = open('pitcher_list.txt', 'r')
@@ -260,7 +282,7 @@ class Pitcher(Player):
         self.e = e
 
     def get_pitcher_info(self):
-        print(f'Below, you\'ll enter pitcher stats for {self.name}')
+        print(f'Below, you\'ll enter pitcher stats.')
         self.type = input('Enter SP for a starter, RP for a reliever, and CL for a closer: ')
         self.k = input('Enter pitcher\'s number of strikeouts: ')
         self.bb = input('Enter pitcher\'s number of walks: ')

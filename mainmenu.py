@@ -73,6 +73,10 @@ while choice != 643:
             fielder.calculate_obp()
         elif stat_choice == 3:
             fielder.calculate_slg()
+        elif stat_choice == 4:
+            fielder.calculate_ops()
+        elif stat_choice == 5:
+            fielder.calculate_bb_percent()
 
     elif choice == 6:
         clear_all()
