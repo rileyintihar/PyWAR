@@ -1,11 +1,9 @@
 # Main menu for PyWAR Baseball Stat Calculator and Analyzer
-from player import Player, Fielder, Pitcher
-from stats import FielderStats
+from player import Player, Fielder, Pitcher, save_and_exit, clear_all
 
 player = Player()
 fielder = Fielder()
 pitcher = Pitcher()
-fielder_stats = FielderStats()
 
 choice = None
 position_choice = None
@@ -14,15 +12,14 @@ print('Welcome to PyWAR, the Python-based baseball stat calculator and analyzer.
 print()
 
 
-while choice != 9:
+while choice != 643:
     print('Enter 1 to add a new player and their info.')
-    print('Enter 2 to view a player\'s info.')
+    print('Enter 2 to view a player\'s basic info.')
     print('Enter 3 to view the entire list of added players.')
     print('Enter 4 to search for players by an identifying statistic.')
     print('Enter 5 to calculate stats.')
-    print('Enter 6 to compare stats.')
-    print('Enter 7 to delete a player.')
-    print('Enter 9 to save and exit program.')
+    print('Enter 6 to clear all saved data.')
+    print('Enter 643 (double play reference) to save and exit program.')
     choice = int(input('Menu selection: '))
 
     if choice == 1:
@@ -34,7 +31,6 @@ while choice != 9:
             fielder.get_fielder_info()
             fielder.add_fielder()
             print()
-
         elif position_choice == 2:
             print()
             pitcher.get_pitcher_info()
@@ -48,12 +44,37 @@ while choice != 9:
         player.print_player_list()
 
     elif choice == 4:
-        player.search_player_number()
+        print()
+        print('Enter 1 to search for players by name.')
+        print('Enter 2 to search for players by number.')
+        print('Enter 3 to search for fielders by position.')
+        print('Enter 4 to search for pitchers by type.')
+        search_choice = int(input('Menu selection: '))
+        if search_choice == 1:
+            player.search_player_name()
+        elif search_choice == 2:
+            player.search_player_number()
+        elif search_choice == 3:
+            fielder.search_fielder_position()
+        elif search_choice == 4:
+            pitcher.search_pitcher_type()
 
     elif choice == 5:
-        fielder.search_fielder_position()
-
-    elif choice == 7:
+        print()
         print('Enter 1 to calculate batting average.')
-        print('Enter 1 to calculate distribution of types of hits.')
+        print('Enter 2 to calculate on base percentage.')
+        print('Enter 3 to calculate slugging percentage.')
+        print('Enter 4 to calculate on base plus slugging.')
+        print('Enter 5 to calculate walk percentage.')
+        stat_choice = int(input('Menu selection: '))
+        if stat_choice == 1:
+            fielder.calculate_avg()
+        elif stat_choice == 2:
+            fielder.calculate_obp()
+        elif stat_choice == 3:
+            fielder.calculate_slg()
 
+    elif choice == 6:
+        clear_all()
+
+save_and_exit()

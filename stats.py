@@ -6,8 +6,11 @@ class FielderStats(Fielder):
         super().__init__(self, ab, hit, bb, k, rbi, single, double, triple, hr, sb, putout, e)
 
     def calculate_avg(self):
-        avg = self.hit / self.ab
-        return avg
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                avg = self.hit / self.ab
+                print(avg)
 
     def calculate_obp(self):
         obp = (self.hit + self.bb) / self.ab

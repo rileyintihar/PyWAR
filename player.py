@@ -1,5 +1,8 @@
-player_list = []
-player_number_list = []
+player_list_text = open('player_list.txt', 'r')
+player_list = player_list_text.read().splitlines()
+
+player_number_list_text = open('player_number_list.txt', 'r')
+player_number_list = player_number_list_text.read().splitlines()
 
 
 class Player:
@@ -26,7 +29,7 @@ class Player:
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
                 print()
-                print(f'The player\'s name is {self.name}, and their number is {self.number}. They throw with their {self.throw} and they bat with their {self.bat}.')
+                print(f'The player\'s name is {player_list[i]}, and their number is {player_number_list[i]}.')
                 print()
         if self.name not in player_list:
             print()
@@ -52,21 +55,50 @@ class Player:
         print()
 
 
-fielder_list = []
-fielder_position_list = []
-fielder_ab_list = []
-fielder_hit_list = []
-fielder_bb_list = []
-fielder_k_list = []
-fielder_rbi_list = []
-fielder_single_list = []
-fielder_double_list = []
-fielder_triple_list = []
-fielder_hr_list = []
-fielder_hbp_list = []
-fielder_sb_list = []
-fielder_putout_list = []
-fielder_e_list = []
+fielder_list_text = open('fielder_list.txt', 'r')
+fielder_list = fielder_list_text.read().splitlines()
+
+fielder_position_list_text = open('fielder_position_list.txt', 'r')
+fielder_position_list = fielder_position_list_text.read().splitlines()
+
+fielder_ab_list_text = open('fielder_ab_list.txt', 'r')
+fielder_ab_list = fielder_ab_list_text.read().splitlines()
+
+fielder_hit_list_text = open('fielder_hit_list.txt', 'r')
+fielder_hit_list = fielder_hit_list_text.read().splitlines()
+
+fielder_bb_list_text = open('fielder_bb_list.txt', 'r')
+fielder_bb_list = fielder_bb_list_text.read().splitlines()
+
+fielder_k_list_text = open('fielder_k_list.txt', 'r')
+fielder_k_list = fielder_k_list_text.read().splitlines()
+
+fielder_rbi_list_text = open('fielder_rbi_list.txt', 'r')
+fielder_rbi_list = fielder_rbi_list_text.read().splitlines()
+
+fielder_single_list_text = open('fielder_single_list.txt', 'r')
+fielder_single_list = fielder_single_list_text.read().splitlines()
+
+fielder_double_list_text = open('fielder_double_list.txt', 'r')
+fielder_double_list = fielder_double_list_text.read().splitlines()
+
+fielder_triple_list_text = open('fielder_triple_list.txt', 'r')
+fielder_triple_list = fielder_triple_list_text.read().splitlines()
+
+fielder_hr_list_text = open('fielder_hr_list.txt', 'r')
+fielder_hr_list = fielder_hr_list_text.read().splitlines()
+
+fielder_hbp_list_text = open('fielder_hbp_list.txt', 'r')
+fielder_hbp_list = fielder_hbp_list_text.read().splitlines()
+
+fielder_sb_list_text = open('fielder_sb_list.txt', 'r')
+fielder_sb_list = fielder_sb_list_text.read().splitlines()
+
+fielder_putout_list_text = open('fielder_putout_list.txt', 'r')
+fielder_putout_list = fielder_putout_list_text.read().splitlines()
+
+fielder_e_list_text = open('fielder_e_list.txt', 'r')
+fielder_e_list = fielder_e_list_text.read().splitlines()
 
 
 class Fielder(Player):
@@ -88,7 +120,7 @@ class Fielder(Player):
         self.e = e
 
     def get_fielder_info(self):
-        print(f'Below, you\'ll enter fielder stats for {self.name}')
+        print(f'Below, you\'ll enter fielder stats.')
         self.position = input('Enter player position abbreviation: ')
         self.ab = input('Enter player\'s number of at bats: ')
         self.hit = input('Enter player\'s number of hits: ')
@@ -128,26 +160,88 @@ class Fielder(Player):
         for i in range(0, len(fielder_position_list)):
             if self.position == fielder_position_list[i]:
                 print()
-                print(f'{self.name} plays {self.position}.')
+                print(f'{player_list[i]} plays {self.position}.')
                 print()
         if self.position not in fielder_position_list:
             print()
             print('No players play the inputted position. Please try again.')
             print()
 
+    def calculate_avg(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                avg = float(fielder_hit_list[i]) / float(fielder_ab_list[i])
+                print()
+                print(f'{self.name} is batting {avg}.')
+                print()
+            if self.name not in player_list:
+                print()
+                print('That player\'s name was not found in the list of added players. Please try again.')
+                print()
 
-pitcher_list = []
-pitcher_type_list = []
-pitcher_k_list = []
-pitcher_bb_list = []
-pitcher_ip_list = []
-pitcher_w_list = []
-pitcher_l_list = []
-pitcher_save_list = []
-pitcher_strike_list = []
-pitcher_ball_list = []
-pitcher_hbp_list = []
-pitcher_e_list = []
+    def calculate_obp(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                obp = (float(fielder_hit_list[i]) + float(fielder_bb_list[i]) + float(fielder_hbp_list[i])) / float(fielder_ab_list[i])
+                print()
+                print(f'{self.name} has an on base percentage of {obp}.')
+                print()
+            if self.name not in player_list:
+                print()
+                print('That player\'s name was not found in the list of added players. Please try again.')
+                print()
+
+    def calculate_slg(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                slg = ((float(fielder_single_list[i]) + float(fielder_double_list[i] * 2) + float(fielder_triple_list[i] * 3) + float(fielder_hr_list[i] * 4)) / float(fielder_ab_list[i])) / 100
+                print()
+                print(f'{self.name} has a slugging percentage of {slg}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+
+pitcher_list_text = open('pitcher_list.txt', 'r')
+pitcher_list = pitcher_list_text.read().splitlines()
+
+pitcher_type_list_text = open('pitcher_type_list.txt', 'r')
+pitcher_type_list = pitcher_type_list_text.read().splitlines()
+
+pitcher_k_list_text = open('pitcher_k_list.txt', 'r')
+pitcher_k_list = pitcher_k_list_text.read().splitlines()
+
+pitcher_bb_list_text = open('pitcher_bb_list.txt', 'r')
+pitcher_bb_list = pitcher_bb_list_text.read().splitlines()
+
+pitcher_ip_list_text = open('pitcher_ip_list.txt', 'r')
+pitcher_ip_list = pitcher_ip_list_text.read().splitlines()
+
+pitcher_w_list_text = open('pitcher_w_list.txt', 'r')
+pitcher_w_list = pitcher_w_list_text.read().splitlines()
+
+pitcher_l_list_text = open('pitcher_l_list.txt', 'r')
+pitcher_l_list = pitcher_l_list_text.read().splitlines()
+
+pitcher_save_list_text = open('pitcher_save_list.txt', 'r')
+pitcher_save_list = pitcher_save_list_text.read().splitlines()
+
+pitcher_strike_list_text = open('pitcher_strike_list.txt', 'r')
+pitcher_strike_list = pitcher_strike_list_text.read().splitlines()
+
+pitcher_ball_list_text = open('pitcher_ball_list.txt', 'r')
+pitcher_ball_list = pitcher_ball_list_text.read().splitlines()
+
+pitcher_hbp_list_text = open('pitcher_hbp_list.txt', 'r')
+pitcher_hbp_list = pitcher_hbp_list_text.read().splitlines()
+
+pitcher_e_list_text = open('pitcher_e_list.txt', 'r')
+pitcher_e_list = pitcher_e_list_text.read().splitlines()
 
 
 class Pitcher(Player):
@@ -193,7 +287,7 @@ class Pitcher(Player):
         pitcher_hbp_list.append(self.hbp)
         pitcher_e_list.append(self.e)
 
-    def search_pitcher_position(self):
+    def search_pitcher_type(self):
         print()
         self.type = input('Enter SP, RP, or CL to search the pitcher list: ')
         for i in range(0, len(pitcher_type_list)):
@@ -206,3 +300,181 @@ class Pitcher(Player):
             print(f'No pitchers are classified as {self.type}. Please try again.')
             print()
 
+
+def clear_all():
+    player_list.clear()
+    player_number_list.clear()
+    fielder_list.clear()
+    fielder_position_list.clear()
+    fielder_ab_list.clear()
+    fielder_hit_list.clear()
+    fielder_bb_list.clear()
+    fielder_k_list.clear()
+    fielder_rbi_list.clear()
+    fielder_single_list.clear()
+    fielder_double_list.clear()
+    fielder_triple_list.clear()
+    fielder_hr_list.clear()
+    fielder_hbp_list.clear()
+    fielder_sb_list.clear()
+    fielder_putout_list.clear()
+    fielder_e_list.clear()
+    pitcher_list.clear()
+    pitcher_type_list.clear()
+    pitcher_k_list.clear()
+    pitcher_bb_list.clear()
+    pitcher_ip_list.clear()
+    pitcher_w_list.clear()
+    pitcher_l_list.clear()
+    pitcher_save_list.clear()
+    pitcher_strike_list.clear()
+    pitcher_ball_list.clear()
+    pitcher_hbp_list.clear()
+    pitcher_e_list.clear()
+
+
+def save_and_exit():
+    save_text = open('player_list.txt', 'w')
+    for stat in player_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('player_number_list.txt', 'w')
+    for stat in player_number_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_list.txt', 'w')
+    for stat in fielder_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_position_list.txt', 'w')
+    for stat in fielder_position_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_ab_list.txt', 'w')
+    for stat in fielder_ab_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_hit_list.txt', 'w')
+    for stat in fielder_hit_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_bb_list.txt', 'w')
+    for stat in fielder_bb_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_k_list.txt', 'w')
+    for stat in fielder_k_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_rbi_list.txt', 'w')
+    for stat in fielder_rbi_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_single_list.txt', 'w')
+    for stat in fielder_single_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_double_list.txt', 'w')
+    for stat in fielder_double_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_triple_list.txt', 'w')
+    for stat in fielder_triple_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_hr_list.txt', 'w')
+    for stat in fielder_hr_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_hbp_list.txt', 'w')
+    for stat in fielder_hbp_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_sb_list.txt', 'w')
+    for stat in fielder_sb_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_putout_list.txt', 'w')
+    for stat in fielder_putout_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('fielder_e_list.txt', 'w')
+    for stat in fielder_e_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_list.txt', 'w')
+    for stat in pitcher_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_type_list.txt', 'w')
+    for stat in pitcher_type_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_k_list.txt', 'w')
+    for stat in pitcher_k_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_bb_list.txt', 'w')
+    for stat in pitcher_bb_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_ip_list.txt', 'w')
+    for stat in pitcher_ip_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_w_list.txt', 'w')
+    for stat in pitcher_w_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_l_list.txt', 'w')
+    for stat in pitcher_l_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_save_list.txt', 'w')
+    for stat in pitcher_save_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_strike_list.txt', 'w')
+    for stat in pitcher_strike_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_ball_list.txt', 'w')
+    for stat in pitcher_ball_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_hbp_list.txt', 'w')
+    for stat in pitcher_hbp_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
+
+    save_text = open('pitcher_e_list.txt', 'w')
+    for stat in pitcher_e_list:
+        save_text.write("%s\n" % str(stat))
+    save_text.close()
