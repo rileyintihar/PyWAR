@@ -1,4 +1,5 @@
 # Main menu for PyWAR Baseball Stat Calculator and Analyzer
+
 from player import Player, Fielder, Pitcher, save_and_exit, clear_all
 
 player = Player()
@@ -66,6 +67,10 @@ while choice != 643:
         print('Enter 3 to calculate slugging percentage.')
         print('Enter 4 to calculate on base plus slugging.')
         print('Enter 5 to calculate walk percentage.')
+        print('Enter 6 to calculate strikeout percentage.')
+        print('Enter 7 to calculate walk to strikeout ratio.')
+        print('Enter 8 to calculate at bat to home run ratio.')
+        print('Enter 9 to calculate extra base hit percentage.')
         stat_choice = int(input('Menu selection: '))
         if stat_choice == 1:
             fielder.calculate_avg()
@@ -77,6 +82,14 @@ while choice != 643:
             fielder.calculate_ops()
         elif stat_choice == 5:
             fielder.calculate_bb_percent()
+        elif stat_choice == 6:
+            fielder.calculate_k_percent()
+        elif stat_choice == 7:
+            fielder.calculate_bb_to_k_ratio()
+        elif stat_choice == 8:
+            fielder.calculate_ab_to_hr_ratio()
+        elif stat_choice == 9:
+            fielder.calculate_xbh()
 
     elif choice == 6:
         clear_all()

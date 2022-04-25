@@ -1,3 +1,5 @@
+# Collects basic player stats and goes into specialized position stat collection for eventual advanced stat calculation
+
 player_list_text = open('player_list.txt', 'r')
 player_list = player_list_text.read().splitlines()
 
@@ -227,6 +229,62 @@ class Fielder(Player):
                 print()
                 print(f'{self.name} has a walk percentage of {bb_percent}.')
                 print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_k_percent(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                k_percent = int(fielder_k_list[i]) / int(fielder_ab_list[i])
+                print()
+                print(f'{self.name} has a strikeout percentage of {k_percent}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_bb_to_k_ratio(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                bb_to_k_ratio = int(fielder_bb_list[i]) / int(fielder_k_list[i])
+                print()
+                print(f'{self.name} has a walk to strikeout ratio of {bb_to_k_ratio}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_ab_to_hr_ratio(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                ab_to_hr_ratio = int(fielder_ab_list[i]) / int(fielder_hr_list[i])
+                print()
+                print(f'{self.name} has an at bat to home run ratio of {ab_to_hr_ratio}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_xbh(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                xbh = (int(fielder_double_list[i]) + int(fielder_triple_list[i]) + int(fielder_hr_list[i]))/ int(fielder_ab_list[i])
+                print()
+                print(f'{self.name} has an extra base hit percentage of {xbh}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
 
 
 pitcher_list_text = open('pitcher_list.txt', 'r')

@@ -27,5 +27,3 @@ class FielderStats(Fielder):
     def calculate_bb_percentage(self):
         bb_percentage = self.bb / self.ab
         return bb_percentage
-
-
