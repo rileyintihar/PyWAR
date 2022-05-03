@@ -9,6 +9,9 @@ player_number_list = player_number_list_text.read().splitlines()
 
 
 class Player:
+    """
+    Main class that holds all players, regardless of their designation or position
+    """
     def __init__(self, name=None, number=None, throw=None, bat=None):
         self.name = name
         self.number = number
@@ -126,6 +129,9 @@ fielder_e_list = fielder_e_list_text.read().splitlines()
 
 
 class Fielder(Player):
+    """
+    Subclass of Player() that designates positional players other than pitchers.
+    """
     def __init__(self, name=None, position=None, ab=None, hit=None, bb=None, k=None, rbi=None, single=None, double=None, triple=None, hr=None, hbp=None, sb=None, putout=None, e=None):
         super().__init__(self, name)
         self.position = position
@@ -396,6 +402,9 @@ pitcher_e_list = pitcher_e_list_text.read().splitlines()
 
 
 class Pitcher(Player):
+    """
+    Subclass of Player() that designates pitchers.
+    """
     def __init__(self, name=None, type=None, k=None, bb=None, ip=None, w=None, l=None, save=None, strike=None, ball=None, hbp=None, e=None):
         super().__init__(self, name)
         self.type = type
