@@ -1,21 +1,28 @@
 # Main menu for PyWAR Baseball Stat Calculator and Analyzer
+
 if __name__ == "__main__":
     from player import Player, Fielder, Pitcher, save_and_exit, clear_all
     import sportsipystats
 
 
 def main():
+    """
+    Main function that loops endlessly until user ends the program. Contains a menu system and references all functions established in other files.
+    :return:
+    """
+
+    # Class variable definition
     player = Player()
     fielder = Fielder()
     pitcher = Pitcher()
 
     choice = None
-    position_choice = None
 
+    # Opening message
     print('Welcome to PyWAR, the Python-based baseball stat calculator and analyzer.')
     print()
 
-
+    # Beginning of while loop for main menu
     while choice != 643:
         print('Enter 1 to add a new player and their info.')
         print('Enter 2 to view a player\'s basic info.')
@@ -77,6 +84,11 @@ def main():
             print('Enter 9 to calculate extra base hit percentage.')
             print('Enter 10 to calculate thrown strike percentage.')
             print('Enter 11 to calculate thrown ball percentage.')
+            print('Enter 12 to calculate hit batsmen percentage.')
+            print('Enter 13 to calculate walk to strikeout ratio.')
+            print('Enter 14 to calculate win percentage.')
+            print('Enter 15 to calculate loss percentage.')
+            print('Enter 16 to calculate WAR value.')
             stat_choice = int(input('Menu selection: '))
             if stat_choice == 1:
                 fielder.calculate_avg()
@@ -100,6 +112,16 @@ def main():
                 pitcher.calculate_strike_percentage()
             elif stat_choice == 11:
                 pitcher.calculate_ball_percentage()
+            elif stat_choice == 12:
+                pitcher.calculate_hbp_percentage()
+            elif stat_choice == 13:
+                pitcher.calculate_bb_to_k_percentage()
+            elif stat_choice == 14:
+                pitcher.calculate_w_percentage()
+            elif stat_choice == 15:
+                pitcher.calculate_l_percentage()
+            elif stat_choice == 16:
+                pitcher.calculate_war_percentage()
 
         elif choice == 6:
             clear_all()
@@ -118,5 +140,6 @@ def main():
                 sportsipystats.get_player_stats()
 
     save_and_exit()
+
 
 main()

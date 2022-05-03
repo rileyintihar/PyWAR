@@ -1,5 +1,6 @@
 # Collects basic player stats and goes into specialized position stat collection for eventual advanced stat calculation
 
+# Importing previous basic player data
 player_list_text = open('player_list.txt', 'r')
 player_list = player_list_text.read().splitlines()
 
@@ -15,17 +16,29 @@ class Player:
         self.bat = bat
 
     def get_player_info(self):
+        """
+        Prompts user to imput basic player stats.
+        :return:
+        """
         self.name = input('Enter the player\'s name: ')
         self.number = input('Enter the player\'s number: ')
         self.throw = input('Enter R for a right-handed thrower, and enter L for a left-handed thrower: ')
         self.bat = input('Enter R for a right-handed batter, and enter L for a left-handed batter: ')
 
     def add_player(self):
+        """
+        Adds player name and number to specific global lists.
+        :return:
+        """
         player_list.append(self.name)
         player_number_list.append(self.number)
         print()
 
     def search_player_name(self):
+        """
+        Allows the user to search for a player and their info by their name.
+        :return:
+        """
         print()
         self.name = input('Enter a player name to search the player list: ')
         for i in range(0, len(player_list)):
@@ -39,6 +52,10 @@ class Player:
             print()
 
     def search_player_number(self):
+        """
+        Allows the user to search for a player and their info by their number.
+        :return:
+        """
         print()
         self.number = input('Enter a player number to search the player list: ')
         for i in range(0, len(player_list)):
@@ -52,11 +69,16 @@ class Player:
             print()
 
     def print_player_list(self):
+        """
+        Prints all current saved players.
+        :return:
+        """
         print()
         print(f'Current list of players: {player_list}')
         print()
 
 
+# Opening of saved data from program text files
 fielder_list_text = open('fielder_list.txt', 'r')
 fielder_list = fielder_list_text.read().splitlines()
 
@@ -122,6 +144,10 @@ class Fielder(Player):
         self.e = e
 
     def get_fielder_info(self):
+        """
+        Prompts user to enter fielder information and stats.
+        :return:
+        """
         print(f'Below, you\'ll enter fielder stats.')
         self.position = input('Enter player position abbreviation: ')
         self.ab = input('Enter player\'s number of at bats: ')
@@ -139,6 +165,10 @@ class Fielder(Player):
         self.e = input('Enter player\'s number of errors: ')
 
     def add_fielder(self):
+        """
+        Adds all fielder stats to list .txt files.
+        :return:
+        """
         fielder_list.append(self.name)
         fielder_position_list.append(self.position)
         fielder_ab_list.append(self.ab)
@@ -157,6 +187,10 @@ class Fielder(Player):
         print()
 
     def search_fielder_position(self):
+        """
+        Allows user to search for a fielder by their position.
+        :return:
+        """
         print()
         self.position = input('Enter a position abbreviation to search the fielder list: ')
         for i in range(0, len(fielder_position_list)):
@@ -170,6 +204,10 @@ class Fielder(Player):
             print()
 
     def calculate_avg(self):
+        """
+        Calculates batting average.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -183,6 +221,10 @@ class Fielder(Player):
                 print()
 
     def calculate_obp(self):
+        """
+        Calculates on base percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -196,6 +238,10 @@ class Fielder(Player):
                 print()
 
     def calculate_slg(self):
+        """
+        Calculates slugging percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -209,6 +255,10 @@ class Fielder(Player):
             print()
 
     def calculate_ops(self):
+        """
+        Calculates on base plus slugging value.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -222,6 +272,10 @@ class Fielder(Player):
             print()
 
     def calculate_bb_percent(self):
+        """
+        Calculates batter walk percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -235,6 +289,10 @@ class Fielder(Player):
             print()
 
     def calculate_k_percent(self):
+        """
+        Calculates batter strikeout percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -248,6 +306,10 @@ class Fielder(Player):
             print()
 
     def calculate_bb_to_k_ratio(self):
+        """
+        Calculates batter walk to strikeout ratio.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -261,6 +323,10 @@ class Fielder(Player):
             print()
 
     def calculate_ab_to_hr_ratio(self):
+        """
+        Calculates batter at bat to home run ratio.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -274,10 +340,14 @@ class Fielder(Player):
             print()
 
     def calculate_xbh(self):
+        """
+        Calculates batter extra base hit percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
-                xbh = (int(fielder_double_list[i]) + int(fielder_triple_list[i]) + int(fielder_hr_list[i]))/ int(fielder_ab_list[i])
+                xbh = (int(fielder_double_list[i]) + int(fielder_triple_list[i]) + int(fielder_hr_list[i])) / int(fielder_ab_list[i])
                 print()
                 print(f'{self.name} has an extra base hit percentage of {xbh}.')
                 print()
@@ -287,6 +357,7 @@ class Fielder(Player):
             print()
 
 
+# Opening of saved data from program text files
 pitcher_list_text = open('pitcher_list.txt', 'r')
 pitcher_list = pitcher_list_text.read().splitlines()
 
@@ -340,6 +411,10 @@ class Pitcher(Player):
         self.e = e
 
     def get_pitcher_info(self):
+        """
+        Prompts user to enter basic pitcher information and stats.
+        :return:
+        """
         print(f'Below, you\'ll enter pitcher stats.')
         self.type = input('Enter SP for a starter, RP for a reliever, and CL for a closer: ')
         self.k = input('Enter pitcher\'s number of strikeouts: ')
@@ -354,6 +429,10 @@ class Pitcher(Player):
         self.e = input('Enter pitcher\'s number of errors: ')
 
     def add_pitcher(self):
+        """
+        Adds pitcher information to global lists.
+        :return:
+        """
         pitcher_list.append(self.name)
         pitcher_type_list.append(self.type)
         pitcher_k_list.append(self.k)
@@ -368,6 +447,10 @@ class Pitcher(Player):
         pitcher_e_list.append(self.e)
 
     def search_pitcher_type(self):
+        """
+        Allows user to search for pitchers by their identifying role.
+        :return:
+        """
         print()
         self.type = input('Enter SP, RP, or CL to search the pitcher list: ')
         for i in range(0, len(pitcher_type_list)):
@@ -381,6 +464,10 @@ class Pitcher(Player):
             print()
 
     def calculate_strike_percentage(self):
+        """
+        Calculates thrown strike percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -394,6 +481,10 @@ class Pitcher(Player):
             print()
 
     def calculate_ball_percentage(self):
+        """
+        Calculates thrown ball percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -407,6 +498,10 @@ class Pitcher(Player):
             print()
 
     def calculate_hbp_percentage(self):
+        """
+        Calculates hit batsmen percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -420,6 +515,10 @@ class Pitcher(Player):
             print()
 
     def calculate_bb_to_k_percentage(self):
+        """
+        Calculates thrown walk to thrown strikeout percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -433,6 +532,10 @@ class Pitcher(Player):
             print()
 
     def calculate_w_percentage(self):
+        """
+        Calulates pitcher win percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -446,6 +549,10 @@ class Pitcher(Player):
             print()
 
     def calculate_l_percentage(self):
+        """
+        Calculates pitcher loss percentage.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
@@ -459,6 +566,10 @@ class Pitcher(Player):
             print()
 
     def calculate_war_percentage(self):
+        """
+        Calculates pitcher WAR based on 2021 season constants.
+        :return:
+        """
         self.name = input('Enter player name for calculation: ')
         war_factor = 11.266578 # MLB 2021 Average
         for i in range(0, len(player_list)):
@@ -474,6 +585,10 @@ class Pitcher(Player):
 
 
 def clear_all():
+    """
+    Clears all lists and their associated data.
+    :return:
+    """
     player_list.clear()
     player_number_list.clear()
     fielder_list.clear()
@@ -506,6 +621,10 @@ def clear_all():
 
 
 def save_and_exit():
+    """
+    Saves all lists to their respective text files at the close of the program.
+    :return:
+    """
     save_text = open('player_list.txt', 'w')
     for stat in player_list:
         save_text.write("%s\n" % str(stat))

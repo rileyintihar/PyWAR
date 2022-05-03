@@ -1,20 +1,34 @@
+# Sportsipy module functions
+
 from sportsipy.mlb.teams import Teams
 from sportsipy.mlb.roster import Player
 
 
 def print_team_wins():
+    """
+    Prints all MLB team abbreviations and each team's wins this season.
+    :return:
+    """
     teams = Teams()
     for team in teams:
         print(f'{team.abbreviation} has {team.wins} wins so far this season.')
 
 
 def print_team_losses():
+    """
+    Prints all MLB team abbreviations and each team's losses this season.
+    :return:
+    """
     teams = Teams()
     for team in teams:
         print(f'{team.abbreviation} has {team.losses} losses so far this season.')
 
 
 def get_player_stats():
+    """
+    Prompts user for sports-reference.com player ID and prints stats for entered player.
+    :return:
+    """
     player_selection = input('Enter player\'s first five letters of last name, first two letters of first name, and 01 at the end with no spaces: ')
     p = Player(player_selection)
     print()
@@ -39,6 +53,7 @@ def get_player_stats():
     print(f'Player\'s career earned runs count is {p.earned_runs_allowed}.')
     print(f'Player\'s career hits allowed count is {p.hits_allowed}.')
     print(f'Player\'s career batters faced count is {p.batters_faced}.')
+    print()
 
 
 
