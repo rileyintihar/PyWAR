@@ -199,7 +199,7 @@ class Fielder(Player):
         self.name = input('Enter player name for calculation: ')
         for i in range(0, len(player_list)):
             if self.name == player_list[i]:
-                slg = ((int(fielder_single_list[i]) + int(fielder_double_list[i] * 2) + int(fielder_triple_list[i] * 3) + int(fielder_hr_list[i] * 4)) / int(fielder_ab_list[i])) / 100
+                slg = ((int(fielder_single_list[i]) + int(fielder_double_list[i] * 2) + int(fielder_triple_list[i] * 3) + int(fielder_hr_list[i] * 4)) / int(fielder_ab_list[i]))
                 print()
                 print(f'{self.name} has a slugging percentage of {slg}.')
                 print()
@@ -378,6 +378,98 @@ class Pitcher(Player):
         if self.type not in pitcher_type_list:
             print()
             print(f'No pitchers are classified as {self.type}. Please try again.')
+            print()
+
+    def calculate_strike_percentage(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                strike_percent = int(pitcher_strike_list[i]) / (int(pitcher_strike_list[i]) + int(pitcher_ball_list[i]))
+                print()
+                print(f'{self.name} has a strike percentage of {strike_percent}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_ball_percentage(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                ball_percent = int(pitcher_ball_list[i]) / (int(pitcher_ball_list[i]) + int(pitcher_strike_list[i]))
+                print()
+                print(f'{self.name} has a ball percentage of {ball_percent}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_hbp_percentage(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                hbp_percent = int(pitcher_hbp_list[i]) / (int(pitcher_strike_list[i]) + int(pitcher_ball_list[i]))
+                print()
+                print(f'{self.name} has a hit batsmen per pitch percentage of {hbp_percent}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_bb_to_k_percentage(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                bb_to_k_percent = int(pitcher_bb_list[i]) / int(pitcher_k_list[i])
+                print()
+                print(f'{self.name} has a walk to strikeout percentage of {bb_to_k_percent}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_w_percentage(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                w_percent = int(pitcher_w_list[i]) / (int(pitcher_w_list[i]) + int(pitcher_l_list[i]))
+                print()
+                print(f'{self.name} has a win percentage of {w_percent}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_l_percentage(self):
+        self.name = input('Enter player name for calculation: ')
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                l_percent = int(pitcher_l_list[i]) / (int(pitcher_w_list[i]) + int(pitcher_l_list[i]))
+                print()
+                print(f'{self.name} has a win percentage of {l_percent}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
+            print()
+
+    def calculate_war_percentage(self):
+        self.name = input('Enter player name for calculation: ')
+        war_factor = 11.266578 # MLB 2021 Average
+        for i in range(0, len(player_list)):
+            if self.name == player_list[i]:
+                war = ((int(pitcher_w_list[i]) + int(pitcher_save_list[i]) + int(pitcher_ip_list[i])) * war_factor) / int(pitcher_k_list[i]) * war_factor
+                print()
+                print(f'{self.name} has a WAR rating (using 2021 average WAR factor) of {war}.')
+                print()
+        if self.name not in player_list:
+            print()
+            print('That player\'s name was not found in the list of added players. Please try again.')
             print()
 
 
